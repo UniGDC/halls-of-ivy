@@ -12,16 +12,22 @@ public class buildMenu : MonoBehaviour {
     }
 
     public GameObject normalBuildingPre;
+    public GameObject secondBuldingPre;
 
-    void Start()
+    /*void Start()
     {
         buildingSelect = normalBuildingPre;
-    }
+    }*/
     private GameObject buildingSelect;
 
     public GameObject selectingBuilding()
     {
         return buildingSelect;
 
+    }
+    public void setBuildingtoBuild(GameObject building)
+    {
+
+        buildingSelect = building; 
     }
 }

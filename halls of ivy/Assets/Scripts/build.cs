@@ -15,7 +15,7 @@ public class build : MonoBehaviour {
 
     public GameObject buildings;
 
-    
+    buildMenu buildMenu;
 
 
     // Use this for initialization
@@ -23,7 +23,7 @@ public class build : MonoBehaviour {
         rend = GetComponent<Renderer>();
         //buildingRend = buildings.GetComponent<Renderer>();
 
-        
+        buildMenu = buildMenu.instance;
         
     }
 	
@@ -31,6 +31,10 @@ public class build : MonoBehaviour {
     void OnMouseEnter()
     {
         rend.material.color = hoverColor;
+        if (buildMenu.selectingBuilding() == null)
+        {
+            return;
+        }
     }
     private void OnMouseExit()
     {
@@ -39,7 +43,11 @@ public class build : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        GameObject buildingToBuild = buildMenu.instance.selectingBuilding();
+        if(buildMenu.selectingBuilding() == null)
+        {
+            return;
+        }
+        GameObject buildingToBuild = buildMenu.selectingBuilding();
 
         buildings =(GameObject)Instantiate(buildingToBuild, transform.position, buildingToBuild.transform.rotation);
     }
